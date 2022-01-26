@@ -6,6 +6,10 @@ const agregarCita = async(req, res) => {
 
     cita.doctor = req.usuario.id;
 
+    if(cita.costo){
+        cita.costo = 0;
+    }
+
     try{
 
         const nuevaCita = new Citas(cita);
@@ -78,7 +82,10 @@ const actualizarCita = async(req,res)=>{
         citaDB.numero = cita.numero;
         citaDB.fecha = cita.fecha;
         citaDB.hora = cita.hora;
-        citaDB.hospital = cita.hospital;
+
+
+        citaDB.costo = cita.costo || 0;
+        citaDB.hospital = cita.hospital || '';
 
         citaDB.informacion = cita.informacion || '';
         citaDB.numero2 = cita.numero2 || '';

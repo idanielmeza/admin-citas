@@ -32,8 +32,7 @@ const citaSchema = new Schema({
     },
 
     hospital:{
-        type:String,
-        required:[true,'El hospital es necesario']
+        type:String
     },
 
     informacion:{
@@ -44,6 +43,14 @@ const citaSchema = new Schema({
         type:Schema.Types.ObjectId,
         ref:'Usuario',
         required:[true,'El usuario es necesario']
+    },
+
+    tipo:{
+        type:String,
+    },
+
+    costo:{
+        type:Number
     }
 
 });
