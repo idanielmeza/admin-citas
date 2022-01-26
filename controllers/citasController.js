@@ -37,8 +37,6 @@ const obtenerCitas = async(req,res) => {
     try {
         const citas = await Citas.find({fecha});
 
-        console.log(citas);
-
         res.status(200).json(citas);
     } catch (error) {
         console.log(error);
@@ -70,7 +68,7 @@ const actualizarCita = async(req,res)=>{
     const cita = req.body;
 
     try {
-        const citaDB = await Citas.findById(req.params.id);
+        let citaDB = await Citas.findById(req.params.id);
 
         if(!citaDB){
             return res.status(404).json({mensaje:'No se encontro la cita'});
@@ -80,9 +78,11 @@ const actualizarCita = async(req,res)=>{
         citaDB.numero = cita.numero;
         citaDB.fecha = cita.fecha;
         citaDB.hora = cita.hora;
-        citaDB.informacion = cita.informacion;
-        citaDB.email = cita.email;
         citaDB.hospital = cita.hospital;
+
+        citaDB.informacion = cita.informacion || '';
+        citaDB.numero2 = cita.numero2 || '';
+        citaDB.email = cita.email || '';
 
         await citaDB.save();
 

@@ -5,7 +5,7 @@ const {dbConnection} = require('../config/db');
 class Server {
     constructor(){
         this.app = express();
-        this.port = process.env.PORT || 5000;
+        this.port = 5000;
 
         this.paths={
             auth: '/auth',
