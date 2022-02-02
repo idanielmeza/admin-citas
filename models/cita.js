@@ -51,6 +51,9 @@ const citaSchema = new Schema({
 
     costo:{
         type:Number
+    },
+    edad:{
+        type: Number
     }
 
 });

@@ -90,6 +90,7 @@ const actualizarCita = async(req,res)=>{
         citaDB.informacion = cita.informacion || '';
         citaDB.numero2 = cita.numero2 || '';
         citaDB.email = cita.email || '';
+        citaDB.edad = cita.edad || '';
 
         await citaDB.save();
 
